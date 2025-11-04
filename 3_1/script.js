@@ -10,7 +10,7 @@ form.addEventListener("submit", async (e) => {
 
   try {
     const res = await fetch(
-      `https://restcountries.com/v3.1/capital/${encodeURIComponent(input)}`
+      `https://restcountries.com/v3.1/name/${input}`
     );
 
     if (!res.ok) {
@@ -31,15 +31,19 @@ form.addEventListener("submit", async (e) => {
           : country?.capital || "-";
         const population = country?.population?.toLocaleString?.() || "-";
         const region = country?.region || "-";
-        const subregion = country?.subregion || "-";
-
+        const languages = country?.languages
+        let langList=''
+        for(const language in languages){
+          langList+=language+','
+        }
+        console.log(langList)
         return `
           <tr>
             <td>${name}</td>
             <td>${capital}</td>
             <td>${population}</td>
             <td>${region}</td>
-            <td>${subregion}</td>
+            <td>${langList}</td>
           </tr>
         `;
       })

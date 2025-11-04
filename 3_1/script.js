@@ -1,16 +1,18 @@
 const form = document.querySelector("#searchForm");
 const inputVal = document.querySelector("#inputValue");
 const outputHolder = document.querySelector("tbody");
+const selectMenu=document.querySelector("#selectValue");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const input = inputVal.value.trim();
+  const input = selectMenu.value.trim();
+  console.log(input.value)
   if (input.length === 0) return;
 
   try {
     const res = await fetch(
-      `https://restcountries.com/v3.1/name/${input}`
+      `https://restcountries.com/v3.1/region/${input}`
     );
 
     if (!res.ok) {
@@ -30,20 +32,20 @@ form.addEventListener("submit", async (e) => {
           ? country.capital.join(", ")
           : country?.capital || "-";
         const population = country?.population?.toLocaleString?.() || "-";
-        const region = country?.region || "-";
+        const region = country?.subregion || "-";
         const languages = country?.languages
         let langList=''
-        for(const language in languages){
+       /* for(const language in languages){
           langList+=language+','
         }
-        console.log(langList)
+        console.log(langList)*/
         return `
           <tr>
             <td>${name}</td>
             <td>${capital}</td>
             <td>${population}</td>
             <td>${region}</td>
-            <td>${langList}</td>
+           
           </tr>
         `;
       })

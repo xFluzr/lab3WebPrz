@@ -11,17 +11,24 @@
     <main>
       <form id="searchForm">
         <input type="text" placeholder="Np. Poland" id="inputValue" />
+        <select id="selectValue">
+          <option value="africa">Africa</option>
+          <option value="americas">Americas</option>
+          <option value="europe">Europe</option>
+          <option value="asia">Asia</option>
+          <option value="oceania">Oceania</option>
+        </select>
         <button id="actionBtn" type="submit">Find</button>
       </form>
       <table>
         <thead>
-            <h2 class="tableHeader">Informations About Found Capital </h2>
+          <h2 class="tableHeader">Countries from selected regions</h2>
           <tr>
             <th>Name</th>
             <th>Capital</th>
             <th>Population</th>
-            <th>Region</th>
-            <th>Languages</th>
+            <th>Subregion</th>
+
           </tr>
         </thead>
         <tbody></tbody>
